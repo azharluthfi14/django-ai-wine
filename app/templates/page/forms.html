@@ -1,0 +1,388 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/forms.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dark-mode.css' %}" />
+    <link rel="shortcut icon" href="{% static 'img/brand.ico' %}" />
+    <title>{{title}}</title>
+</head>
+<style>
+    html {
+        overflow-x: hidden;
+    }
+</style>
+
+<body>
+    {% include 'components/spinner.html'  %}
+    {% include 'components/navbar.html' %}
+    <div class="wrapper d-flex">
+        <div class="sideMenu">
+            <div class="sidebar">
+                <ul class="navbar-nav side-nav mt-4">
+                    <li class="nav-item active">
+                        <a href="{% url 'app:dashboard' %}" data-toggle="tooltip" data-placement="right"
+                            title="Dashboard" class="nav-link nav-link-dashboard  px-2 ">
+                            <i class="material-icons md-18 icon mycon">
+                                dashboard
+                            </i>
+                            <span class="text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'app:profile' user.username %}" data-toggle="tooltip" data-placement="right"
+                            title="Account Profile" class="nav-link nav-link-dashboard px-2">
+                            <i class="material-icons md-18 mycon icon">
+                                person
+                            </i>
+                            <span class="text">Account</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'app:predict' %}" data-toggle="tooltip" data-placement="right" title="Form"
+                            class="nav-link nav-link-dashboard active px-2">
+                            <i class="material-icons icon mycon md-18 ">
+                                description
+                            </i>
+                            <span class="text">Form</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'app:data-results' %}" data-toggle="tooltip" data-placement="right" title="Data"
+                            class="nav-link nav-link-dashboard px-2">
+                            <i class="material-icons icon mycon md-18  ">
+                                table_view
+                            </i>
+                            <span class="text">Data</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a data-toggle="modal" data-target="#modalLogOut"
+                            class="nav-link btn-logout nav-link-dashboard px-2">
+                            <i class="material-icons icon mycon md-18  ">
+                                login
+                            </i>
+                            <span class="text">Sign out</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="content">
+            <main class="content-dashboard">
+                <div class="container-fluid">
+                    <div class="item">
+                        <div class="row">
+                            <div class="col-md">
+                                <div class="card-predict">
+                                    <div class="title-form">
+                                        <h3>Form Variable</h3>
+                                    </div>
+                                    <form action="" id="post-form" autocomplete="off">
+                                        {% csrf_token %}
+                                        <div class="form-group row">
+                                            <div class="col-sm-6 field">
+                                                <label for="fixed_acidity">Fixed acidity</label>
+                                                <input type="number" step="0.1" class="form-control form-predict"
+                                                    id="fixed_acidity" placeholder="" required>
+                                            </div>
+                                            <div class="col-sm-6 field">
+                                                <label for="volatile_acidity">Volatile acidity</label>
+                                                <input type="number" step="0.1" class="form-control form-predict"
+                                                    id="volatile_acidity" placeholder="" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-6 field">
+                                                <label for="citric_acid">Critic acid</label>
+                                                <input type="number" step="0.1" class="form-control form-predict"
+                                                    id="citric_acid" placeholder="" required>
+                                            </div>
+                                            <div class="col-sm-6 field">
+                                                <label for="residual_sugar">Residual sugar</label>
+                                                <input type="number" step="0.1" class="form-control form-predict"
+                                                    id="residual_sugar" placeholder="" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-6 field">
+                                                <label for="chlorides">Chlorides</label>
+                                                <input type="number" step="0.1" class="form-control form-predict"
+                                                    id="chlorides" placeholder="" required>
+                                            </div>
+                                            <div class="col-sm-6 field">
+                                                <label for="free_sulfur_dioxide">Free sulfur dioxide</label>
+                                                <input type="number" step="0.1" class="form-control form-predict"
+                                                    id="free_sulfur_dioxide" placeholder="" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-6 field">
+                                                <label for="total_sulfur_dioxide">Total sulfur dioxide</label>
+                                                <input type="number" step="0.1" class="form-control form-predict"
+                                                    id="total_sulfur_dioxide" placeholder="" required>
+                                            </div>
+                                            <div class="col-sm-6 field">
+                                                <label for="density">Density</label>
+                                                <input type="number" step="0.1" class="form-control form-predict"
+                                                    id="density" placeholder="" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-6 field">
+                                                <label for="pH">pH</label>
+                                                <input type="number" step="0.1" class="form-control form-predict"
+                                                    id="pH" placeholder="" required>
+                                            </div>
+                                            <div class="col-sm-6 field">
+                                                <label for="sulphates">Sulphates</label>
+                                                <input type="number" step="0.1" class="form-control form-predict"
+                                                    id="sulphates" placeholder="" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm field">
+                                                <label for="alcohol">Alcohol</label>
+                                                <input type="number" step="0.1" class="form-control form-predict"
+                                                    id="alcohol" placeholder="" required>
+                                            </div>
+                                        </div>
+                                        <div class="actions">
+                                            <button id="process" type="submit" value="Submit"
+                                                class="btn btn-main btn-block">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="my-chart">
+                                    <canvas id="chart_predict"></canvas>
+                                </div>
+                                <div class="table-responsive mt-5">
+                                    <table class="table table-bordered">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th class="col-var" scope="col">Fixed acidity</th>
+                                                <th class="col-var" scope="col">Volatile acidity</th>
+                                                <th class="col-var" scope="col">Critic acid</th>
+                                                <th class="col-var" scope="col">Residual sugar</th>
+                                                <th class="col-var" scope="col">Chlorides</th>
+                                                <th class="col-var" scope="col">Free sulfur</th>
+                                                <th class="col-var" scope="col">Total sulfur</th>
+                                                <th class="col-var" scope="col">Density</th>
+                                                <th class="col-var" scope="col">pH</th>
+                                                <th class="col-var" scope="col">Sulphates</th>
+                                                <th class="col-var" scope="col">Alcohol</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="text-center item-wine">
+                                                <td><span id="fa"></span></td>
+                                                <td><span id="va"></span></td>
+                                                <td><span id="ca"></span></td>
+                                                <td><span id="rs"></span></td>
+                                                <td><span id="c"></span></td>
+                                                <td><span id="fsd"></span></td>
+                                                <td><span id="tsd"></span></td>
+                                                <td><span id="d"></span></td>
+                                                <td><span id="ph"></span></td>
+                                                <td><span id="s"></span></td>
+                                                <td><span id="a"></span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <h5 class="result-title mt-5">Classification result : <span id="prediction" class="main"
+                                        role="status"></span>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    {% include 'components/modalSignout.html' %}
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+    integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"
+    integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg=="
+    crossorigin="anonymous"></script>
+<script src="{% static 'vendor/js/darkMode.js' %}"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.sideMenuToggler').on('click', function () {
+            $('.wrapper').toggleClass('active');
+        });
+    });
+
+    window.addEventListener("beforeunload", function (e) {
+        document.body.className = "page-loading";
+    }, false);
+
+    const fixed_acidity = document.querySelector('#fixed_acidity');
+    const volatile_acidity = document.querySelector('#volatile_acidity');
+    const citric_acid = document.querySelector('#citric_acid');
+    const residual_sugar = document.querySelector('#residual_sugar');
+    const chlorides = document.querySelector('#chlorides');
+    const free_sulfur_dioxide = document.querySelector('#free_sulfur_dioxide');
+    const total_sulfur_dioxide = document.querySelector('#total_sulfur_dioxide');
+    const density = document.querySelector('#density');
+    const pH = document.querySelector('#pH');
+    const sulphates = document.querySelector('#sulphates');
+    const alcohol = document.querySelector('#alcohol');
+
+
+    const xtc = document.getElementById("chart_predict").getContext('2d');
+
+    const gradientFill = xtc.createLinearGradient(0, 0, 0, 300);
+    gradientFill.addColorStop(0, "rgba(117, 10, 193, 1)");
+    gradientFill.addColorStop(1, "rgba(148, 89, 190, 0.4)");
+
+    const gradientStroke = xtc.createLinearGradient(0, 0, 0, 400);
+    gradientStroke.addColorStop(0, "rgba(117, 10, 193, 0.2)");
+    gradientStroke.addColorStop(1, "rgba(0, 0, 0,0.1)");
+    let myChart = new Chart(xtc, {
+
+        type: 'line',
+        data: {
+            labels: ["Fixed acidity", "Volatile acidity", "Critic acid", "Residual sugar", "Chlorides",
+                "Free sulfur dioxide", "Total sulfur dioxide", "Density", "pH", "Sulphates", "Alcohol"
+            ],
+            datasets: [{
+                fill: false,
+                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                backgroundColor: gradientStroke,
+                borderColor: gradientFill,
+                pointBackgroundColor: gradientStroke,
+                borderWidth: 3,
+                fill: true
+            }]
+        },
+        options: {
+            legend: {
+                display: false
+            },
+            title: {
+                display: true,
+                fontSize: 20,
+                position: 'left',
+                text: 'Statistics ',
+                fontColor: '#999999'
+            },
+            maintainAspectRatio: false,
+            scales: {
+                yAxes: [{
+                    gridLines: {
+                        color: "rgba(0, 0, 0, 0.1)",
+                    },
+                    ticks: {
+                        beginAtZero: true,
+                        fontColor: "#999999"
+                    }
+                }],
+                xAxes: [{
+                    gridLines: {
+                        color: "rgba(0, 0, 0, 0.1)",
+                    },
+                    ticks: {
+                        fontColor: "#999999",
+                        beginAtZero: true
+                    }
+                }]
+            }
+
+        }
+    });
+
+    const updateChartValue = (input, dataOrder) => {
+
+        input.addEventListener('change', e => {
+            myChart.data.datasets[0].data[dataOrder] = e.target.value;
+            myChart.update();
+        });
+
+    };
+
+    updateChartValue(fixed_acidity, 0);
+    updateChartValue(volatile_acidity, 1);
+    updateChartValue(citric_acid, 2);
+    updateChartValue(residual_sugar, 3);
+    updateChartValue(chlorides, 4);
+    updateChartValue(free_sulfur_dioxide, 5);
+    updateChartValue(total_sulfur_dioxide, 6);
+    updateChartValue(density, 7);
+    updateChartValue(pH, 8);
+    updateChartValue(sulphates, 9);
+    updateChartValue(alcohol, 10);
+
+
+    $('#process').click(function () {
+
+        $(document).on('submit', '#post-form', function (e) {
+            e.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: 'http://127.0.0.1:8000/user/classification/submit',
+                data: {
+                    fixed_acidity: $('#fixed_acidity').val(),
+                    volatile_acidity: $('#volatile_acidity').val(),
+                    citric_acid: $('#citric_acid').val(),
+                    residual_sugar: $('#residual_sugar').val(),
+                    chlorides: $('#chlorides').val(),
+                    free_sulfur_dioxide: $('#free_sulfur_dioxide').val(),
+                    total_sulfur_dioxide: $('#total_sulfur_dioxide').val(),
+                    density: $('#density').val(),
+                    pH: $('#pH').val(),
+                    sulphates: $('#sulphates').val(),
+                    alcohol: $('#alcohol').val(),
+                    csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                    action: 'POST'
+                },
+                beforeSend: function () { // Before we send the request, remove the .hidden class from the spinner and default to inline-block.
+                    $('#loader').removeClass('hidden')
+                },
+                success: function (json) {
+
+                    document.forms["post-form"].reset();
+                    document.getElementById("prediction").innerHTML = json['classification']
+                    document.getElementById("fa").innerHTML = json['fixed_acidity']
+                    document.getElementById("va").innerHTML = json['volatile_acidity']
+                    document.getElementById("ca").innerHTML = json['citric_acid']
+                    document.getElementById("rs").innerHTML = json['residual_sugar']
+                    document.getElementById("c").innerHTML = json['chlorides']
+                    document.getElementById("fsd").innerHTML = json['free_sulfur_dioxide']
+                    document.getElementById("tsd").innerHTML = json['total_sulfur_dioxide']
+                    document.getElementById("d").innerHTML = json['density']
+                    document.getElementById("ph").innerHTML = json['pH']
+                    document.getElementById("s").innerHTML = json['sulphates']
+                    document.getElementById("a").innerHTML = json['alcohol']
+                },
+                complete: function () { // Set our complete callback, adding the .hidden class and hiding the spinner.
+                    $('#loader').addClass('hidden')
+                },
+                error: function (xhr, errmsg, err) {
+                    console.error("Request timeout :(");
+                    alert('Something wrong!')
+                }
+            });
+        });
+    });
+</script>
+
+</html>

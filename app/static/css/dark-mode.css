@@ -1,0 +1,178 @@
+:root {
+    --bg-dark: #1d202f;
+    --secondary-dark: #222534;
+    --dark-grey: #2f3242;
+    --main-color: #750ac1;
+    --secondary-color: #9459be;
+    --light-color: #ffffff;
+    --sun-light: #f5e612;
+    --shadow-black-100: 0 5px 15px rgba(0, 0, 0, 0.1);
+    --shadow-black-300: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .btn-main {
+    box-shadow: var(--shadow-black-300);
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-track,
+[data-theme="dark"] ::-webkit-scrollbar-track:horizontal {
+    background-color: var(--dark-grey);
+}
+
+/* alert popup dark  */
+
+[data-theme="dark"] .modal-logout {
+    background-color: var(--secondary-dark);
+    color: var(--light-color);
+}
+
+[data-theme="dark"] .modal-header,
+[data-theme="dark"] .modal-footer {
+    border: 1px solid var(--dark-grey);
+}
+
+[data-theme="dark"] .close-modal-logout {
+    color: #ffffff;
+}
+
+[data-theme="dark"] {
+    background-color: var(--bg-dark);
+}
+
+[data-theme="dark"] .moon {
+    color: var(--sun-light);
+}
+
+[data-theme="dark"] .dark-light {
+    background-color: var(--dark-grey);
+}
+
+[data-theme="dark"] .dark-light .icon-light {
+    display: block;
+    color: var(--sun-light);
+}
+
+[data-theme="dark"] .dark-light .icon-dark {
+    display: none;
+
+}
+
+/* navbar */
+[data-theme="dark"] .nav-dashboard,
+[data-theme="dark"] .sideMenu {
+    background-color: var(--secondary-dark);
+    border-color: var(--secondary-dark);
+    color: var(--light-color);
+}
+
+
+[data-theme="dark"] .title-navbar .navbar-brand,
+[data-theme="dark"] .title-navbar .navbar-brand:hover,
+[data-theme="dark"] .icon-my-navbar {
+    color: var(--light-color);
+}
+
+[data-theme="dark"] .icon-my-navbar:hover {
+    color: var(--main-color);
+}
+
+/* card */
+/* [data-theme="dark"] .card-dashboard-1 {
+    background-color: var(--secondary-dark);
+}
+
+[data-theme="dark"] .card-dashboard-item {
+    background-color: var(--dark-grey);
+    color: var(--light-color);
+} */
+
+[data-theme="dark"] .card-dashboard-calendar {
+    background-color: var(--secondary-dark);
+    border-color: var(--secondary-dark);
+    color: var(--light-color);
+}
+
+[data-theme="dark"] #thead-month,
+[data-theme="dark"] #calendar-body {
+    color: var(--light-color);
+}
+
+
+/* style dark profile */
+
+[data-theme="dark"] .item h4,
+[data-theme="dark"] .form-edit-profile {
+    color: var(--light-color);
+}
+
+[data-theme="dark"] .profile-content {
+    background-color: var(--secondary-dark);
+}
+
+[data-theme="dark"] .form-profile {
+    background-color: var(--dark-grey);
+    color: var(--light-color);
+    border: 2px solid transparent;
+}
+
+[data-theme="dark"] .form-profile:focus {
+    background-color: var(--dark-grey);
+    color: var(--light-color);
+    border: 2px solid var(--main-color);
+}
+
+
+/* style form dark */
+
+[data-theme="dark"] .dataTables_filter,
+[data-theme="dark"] .card-predict {
+    background-color: var(--secondary-dark);
+    color: var(--light-color);
+}
+
+[data-theme="dark"] .title-form,
+[data-theme="dark"] .result-title {
+    color: var(--light-color);
+}
+
+[data-theme="dark"] input[type=search],
+[data-theme="dark"] .table .thead-light th,
+[data-theme="dark"] .form-predict {
+    background-color: var(--dark-grey);
+    color: var(--light-color);
+    border: 2px solid transparent;
+}
+
+[data-theme="dark"] .form-predict:focus {
+    border: 2px solid var(--main-color);
+}
+
+[data-theme="dark"] .my-chart {
+    background-color: var(--secondary-dark);
+    border-color: 1px solid var(--dark-grey);
+}
+[data-theme="dark"] .table td, .table th,
+[data-theme="dark"] .item-wine td span {
+    color: var(--light-color);
+}
+
+[data-theme="dark"] .table tbody tr.even {
+    background-color: var(--secondary-dark);
+}
+
+[data-theme="dark"]  a.page-link{
+    background-color: var(--dark-grey);
+    color: var(--light-color);
+    border: none;
+    box-shadow: none;
+} 
+
+[data-theme="dark"]  a.page-link:hover{
+    background-color: var(--secondary-dark);
+}
+
+[data-theme="dark"] li.disabled .page-link
+{
+    background-color: var(--secondary-dark);
+    color: var(--light-color);
+}

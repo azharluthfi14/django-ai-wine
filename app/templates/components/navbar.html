@@ -1,0 +1,45 @@
+{% load static %}
+<nav id="myNav" class="navbar nav-dashboard navbar-expand-md navbar-dark sticky-top">
+    <a class="nav-link px-2 sideMenuToggler">
+        <span class="material-icons icon expandView icon-my-navbar mr-2 ">
+            menu
+        </span>
+    </a>
+    <div class="title-navbar">
+        <a href="{% url 'app:dashboard' %}" class="navbar-brand">
+            <img width="45" height="45" class="d-inline-block align-items-center mr-1"
+                src="{% static 'img/brand2_white.png' %}" alt="">
+            Scientics
+        </a>
+    </div>
+    <div class="nav-top ml-auto">
+        <ul class="navbar-nav navbar-nav-top ml-auto">
+            <li class="nav-item navbar-nav-top-item nav-img">
+                <img src="{{ user.profile.image.url }}" alt="" width="35" height="35" class="rounded ml-auto mr-1">
+                {{ request.user.username }}
+            </li>
+            <li class="nav-item navbar-nav-top-item nav-username ml-4">
+                <a class="link-profile" href="{% url 'app:profile' user.username %}" data-toggle="tooltip"
+                    data-placement="bottom" title="Profile">
+                    <i class="material-icons icon dark-light icon-my-navbar">
+                        person
+                    </i>
+                </a>
+            </li>
+            <li class="nav-item navbar-nav-top-item ml-3">
+                <div class="dark-light" id="darkSwitch">
+                    <div class="icon-dark">
+                        <span class="material-icons my-icon">
+                            brightness_4
+                        </span>
+                    </div>
+                    <div class="icon-light">
+                        <span class="material-icons my-icon">
+                            brightness_high
+                        </span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
